@@ -1,6 +1,19 @@
 # llm-utils
 Utilities for LLM construction and usage.
 
+## LLM construction utilities
+
+Utility|Module
+---|---
+Pytorch DataLoader for LLM model. | `llm_utils.dataLoader`
+Self-attention mechanism classes. | `llm_utils.selfAttn`
+Causal-attention mechanism classes. | `llm_utils.causalAttn`
+
+## LLM usage utilities
+
+Utility|Module
+---|---
+
 # Documentation
 
 Docs|Remarks
