@@ -1,3 +1,12 @@
+# docs dirs
+docs-md/*.yml
+docs-web/*.yml
+docs-web/api/
+docs-web-site/
+
+# .done stamps
+.stamps/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
