@@ -19,7 +19,7 @@ Utility|Module
 Docs|Remarks
 ---|---
 [Markdown docs](docs-md/docs/index.md)|Generated using [mddocs](https://github.com/mirekfoo/mddocs)
-[Web docs](https://mirekfoo.github.io/pyutils/api/)|Generated using [mkdocs-pyapi](https://github.com/mirekfoo/mkdocs-pyapi)
+[Web docs](https://mirekfoo.github.io/llm-utils/api/)|Generated using [mkdocs-pyapi](https://github.com/mirekfoo/mkdocs-pyapi)
 
 # Usage
 
