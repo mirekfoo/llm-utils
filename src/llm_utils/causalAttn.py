@@ -4,6 +4,14 @@ import torch
 import torch.nn as nn
 
 class CausalAttention_V0(nn.Module): # = SelfAttention_Linear
+    """
+    A simple self-attention mechanism implementation using linear layers for query, key, and value projections.
+
+    Args:
+        d_in (int): The input dimension size.
+        d_out (int): The output dimension size for the queries, keys, and values.
+        qkv_bias (bool, optional): If True, adds a learnable bias to the linear projections. Defaults to False.
+    """
 
     def __init__(self, d_in, d_out, qkv_bias=False):
         super().__init__()
@@ -12,6 +20,15 @@ class CausalAttention_V0(nn.Module): # = SelfAttention_Linear
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
 
     def forward(self, x):
+        """
+        Forward pass for the CausalAttention_V0 module.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, seq_len, d_in).
+
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).
+        """
         self.keys = self.W_key(x)
         self.queries = self.W_query(x)
         self.values = self.W_value(x)
@@ -24,6 +41,14 @@ class CausalAttention_V0(nn.Module): # = SelfAttention_Linear
     
 
 class CausalAttention_V1(nn.Module): 
+    """
+    A simple self-attention mechanism implementation using linear layers for query, key, and value projections.
+
+    Args:
+        d_in (int): The input dimension size.
+        d_out (int): The output dimension size for the queries, keys, and values.
+        qkv_bias (bool, optional): If True, adds a learnable bias to the linear projections. Defaults to False.
+    """
 
     def __init__(self, d_in, d_out, qkv_bias=False):
         super().__init__()
@@ -32,6 +57,15 @@ class CausalAttention_V1(nn.Module):
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
 
     def forward(self, x):
+        """
+        Forward pass for the CausalAttention_V1 module.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, seq_len, d_in).
+
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).
+        """
         self.keys = self.W_key(x)
         self.queries = self.W_query(x)
         self.values = self.W_value(x)

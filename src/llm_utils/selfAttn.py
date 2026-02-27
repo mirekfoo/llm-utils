@@ -4,6 +4,13 @@ import torch
 import torch.nn as nn
 
 class SelfAttention_Params(nn.Module):
+    """
+    A simple self-attention mechanism implementation using learnable parameters for query, key, and value projections.
+
+    Args:
+        d_in (int): The input dimension size.
+        d_out (int): The output dimension size for the queries, keys, and values.
+    """
 
     def __init__(self, d_in, d_out):
         super().__init__()
@@ -12,6 +19,15 @@ class SelfAttention_Params(nn.Module):
         self.W_value = nn.Parameter(torch.rand(d_in, d_out))
 
     def forward(self, x):
+        """
+        Forward pass for the SelfAttention_Params module.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, seq_len, d_in).
+
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).
+        """
         keys = x @ self.W_key
         queries = x @ self.W_query
         values = x @ self.W_value
@@ -23,6 +39,14 @@ class SelfAttention_Params(nn.Module):
         return context_vec
 
 class SelfAttention_Linear(nn.Module):
+    """
+    A simple self-attention mechanism implementation using linear layers for query, key, and value projections.
+
+    Args:
+        d_in (int): The input dimension size.
+        d_out (int): The output dimension size for the queries, keys, and values.
+        qkv_bias (bool, optional): If True, adds a learnable bias to the linear projections. Defaults to False.
+    """
 
     def __init__(self, d_in, d_out, qkv_bias=False):
         super().__init__()
@@ -31,6 +55,15 @@ class SelfAttention_Linear(nn.Module):
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
 
     def forward(self, x):
+        """
+        Forward pass for the SelfAttention_Linear module.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, seq_len, d_in).
+
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).
+        """
         keys = self.W_key(x)
         queries = self.W_query(x)
         self.values = self.W_value(x)
@@ -50,6 +83,15 @@ class SelfAttention_Linear4(nn.Module):
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
 
     def forward(self, x):
+        """
+        Forward pass for the SelfAttention_Linear4 module.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, seq_len, d_in).
+
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).
+        """
         keys = self.W_key(x)
         queries = self.W_query(x)
         self.values = self.W_value(x)
@@ -66,6 +108,14 @@ class SelfAttention_Linear4(nn.Module):
         return context_vec.T
 
 class SelfAttention_Linear5(nn.Module):
+    """
+    A simple self-attention mechanism implementation using linear layers for query, key, and value projections.
+
+    Args:
+        d_in (int): The input dimension size.
+        d_out (int): The output dimension size for the queries, keys, and values.
+        qkv_bias (bool, optional): If True, adds a learnable bias to the linear projections. Defaults to False.
+    """
 
     def __init__(self, d_in, d_out, qkv_bias=False):
         super().__init__()
@@ -74,6 +124,15 @@ class SelfAttention_Linear5(nn.Module):
         self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias)
 
     def forward(self, x):
+        """
+        Forward pass for the SelfAttention_Linear5 module.
+
+        Args:
+            x (torch.Tensor): Input tensor of shape (batch_size, seq_len, d_in).
+
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).
+        """
         keys = self.W_key(x)
         queries = self.W_query(x)
         self.values = self.W_value(x)
