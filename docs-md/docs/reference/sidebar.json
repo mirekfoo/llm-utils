@@ -2,7 +2,9 @@
   "items": [
     {
       "items": [
-        "reference/llm_utils/dataLoader"
+        "reference/llm_utils/causalAttn",
+        "reference/llm_utils/dataLoader",
+        "reference/llm_utils/selfAttn"
       ],
       "label": "llm_utils",
       "type": "category"
