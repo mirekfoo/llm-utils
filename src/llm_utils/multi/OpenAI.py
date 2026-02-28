@@ -28,21 +28,21 @@ class LLMApisManager:
     def getModelNames(api: OpenAI):
         return [ model.id for model in api.models.list().data ]
 
-apisManager = LLMApisManager()
 
 class ModelSelection:
     """ Single LLM model selection."""
     
-    def __init__(self, provider, account):
+    def __init__(self, provider, account, apisManager):
         self.provider = provider
         self.account = account
+        self.apisManager = apisManager
         self.models_list = None
         self.selected = None
 
     @property
     def models(self):
         if self.models_list is None:
-            self.models_list = apisManager.getModelNames(apisManager.getApi(self.provider, self.account))
+            self.models_list = self.apisManager.getModelNames(self.apisManager.getApi(self.provider, self.account))
         return self.models_list
 
 # --------------------------------------------------------------------------
@@ -50,18 +50,16 @@ class ModelSelection:
 class Dashboard:
     """Multiple LLMs model selection dashboard."""
     
-    providers_blacklist = ['OpenAI', 'Anthropic']
 
-    @staticmethod
-    def _build_model_selection():
+    def _build_model_selection(self):
         providers = api_keys.getProviders('LLM')
-        providers = [ provider for provider in providers if provider not in Dashboard.providers_blacklist ]
-        return { provider: ModelSelection(provider, account) for provider in providers for account in api_keys.getAccounts(provider) } 
+        providers = [ provider for provider in providers if provider not in self.providers_blacklist ]
+        return { provider: ModelSelection(provider, account, self.apisManager) for provider in providers for account in api_keys.getAccounts(provider) } 
 
-    def __init__(self):
-    #def __init__(self, providers_blacklist=None):
-        #self.providers_blacklist = providers_blacklist
-        self.MODELS = Dashboard._build_model_selection()
+    def __init__(self, providers_blacklist=[]):
+        self.apisManager = LLMApisManager()
+        self.providers_blacklist = providers_blacklist
+        self.MODELS = self._build_model_selection()
         self.provider = None
         self._model = None
 
@@ -99,7 +97,6 @@ class Dashboard:
             self.MODELS[provider].selected = self.MODELS[provider].models[0]
         return self.MODELS[provider].selected
 
-dashboard = Dashboard()
 
 # --------------------------------------------------------------------------
 
@@ -107,20 +104,21 @@ class Chat:
     """Chat loop using currently selected LLM.
     You can switch between model providers during the chat."""
 
-    def __call__(self, message, history):
-        #print(here())
-        #return f"[{dashboard.provider} / {dashboard.model}] → {message}"
+    def __init__(self, dashboard):
+        self.dashboard = dashboard
 
-        if (dashboard.provider is None or dashboard.model is None):
+    def __call__(self, message, history):
+
+        if (self.dashboard.provider is None or self.dashboard.model is None):
             return "Please select a provider and a model"
 
         messages = [{"role": "user", "content": message}]
 
-        api = apisManager.getApi(dashboard.provider, dashboard.account)
+        api = self.dashboard.apisManager.getApi(self.dashboard.provider, self.dashboard.account)
         response = api.chat.completions.create(
-            model=dashboard.model,
+            model=self.dashboard.model,
             messages=messages
         )
         answer = response.choices[0].message.content
 
-        return f"[{dashboard.provider} / {dashboard.model}]\n{answer}"
+        return f"[{self.dashboard.provider} / {self.dashboard.model}]\n{answer}"
