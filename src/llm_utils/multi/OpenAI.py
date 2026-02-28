@@ -50,7 +50,7 @@ class ModelSelection:
 class Dashboard:
     """Multiple LLMs model selection dashboard."""
     
-    #providers_blacklist = ['OpenAI', 'Anthropic']
+    providers_blacklist = ['OpenAI', 'Anthropic']
 
     @staticmethod
     def _build_model_selection():
@@ -58,8 +58,9 @@ class Dashboard:
         providers = [ provider for provider in providers if provider not in Dashboard.providers_blacklist ]
         return { provider: ModelSelection(provider, account) for provider in providers for account in api_keys.getAccounts(provider) } 
 
-    def __init__(self, providers_blacklist=None):
-        self.providers_blacklist = providers_blacklist
+    def __init__(self):
+    #def __init__(self, providers_blacklist=None):
+        #self.providers_blacklist = providers_blacklist
         self.MODELS = Dashboard._build_model_selection()
         self.provider = None
         self._model = None
@@ -106,7 +107,7 @@ class Chat:
     """Chat loop using currently selected LLM.
     You can switch between model providers during the chat."""
 
-    def __call__(message, history):
+    def __call__(self, message, history):
         #print(here())
         #return f"[{dashboard.provider} / {dashboard.model}] → {message}"
 
