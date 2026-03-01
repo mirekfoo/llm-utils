@@ -2,6 +2,7 @@
 
 import api_keys
 from pyutils.json_util import obj2JSON
+from pyutils.kwargs import getKwarg
 
 from openai import OpenAI
 import json
@@ -108,8 +109,10 @@ class Chat:
     """Chat loop using currently selected LLM.
     You can switch between model providers during the chat."""
 
-    def __init__(self, dashboard):
+    def __init__(self, dashboard, **kwargs):
         self.dashboard = dashboard
+        self.return_protocol = getKwarg(kwargs, 'return_protocol', False)
+        self.return_history = getKwarg(kwargs, 'return_history', False)
 
     def __call__(self, message, history):
 
@@ -130,14 +133,20 @@ class Chat:
         )
         
         answer = response.choices[0].message.content
-        role = response.choices[0].message.role
+
+        res = {}
+        res['answer'] = f"[{self.dashboard.provider} / {self.dashboard.model}]\n{answer}"
         
-        response_record = [{"role": role, "content": answer}]
-        new_history = history + new_messages + response_record
+        if self.return_history:
+            role = response.choices[0].message.role
+            response_record = [{"role": role, "content": answer}]
+            new_history = history + new_messages + response_record
+            res['history'] = new_history
 
-        query_messages_str = json.dumps(query_messages, indent=1, default=obj2JSON)
-        response_str = json.dumps(response.model_dump(), indent=2)
+        if self.return_protocol:
+            query_messages_str = json.dumps(query_messages, indent=1, default=obj2JSON)
+            response_str = json.dumps(response.model_dump(), indent=2)
+            protocol = f"Query: {query_messages_str}\nResponse: {response_str}"
+            res['protocol'] = protocol
 
-        protocol = f"Query: {query_messages_str}\nResponse: {response_str}"
-
-        return f"[{self.dashboard.provider} / {self.dashboard.model}]\n{answer}", protocol, new_history
+        return res
