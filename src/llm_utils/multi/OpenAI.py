@@ -1,7 +1,10 @@
 """ Utilities for Multiple OpenAI compatible LLMs selection and usage."""
 
 import api_keys
+from pyutils.json_util import obj2JSON
+
 from openai import OpenAI
+import json
 
 # --------------------------------------------------------------------------
 
@@ -62,6 +65,7 @@ class Dashboard:
         self.MODELS = self._build_model_selection()
         self.provider = None
         self._model = None
+        self.use_history = True
 
     @property
     def providers(self):
@@ -112,13 +116,28 @@ class Chat:
         if (self.dashboard.provider is None or self.dashboard.model is None):
             return "Please select a provider and a model"
 
-        messages = [{"role": "user", "content": message}]
+        new_messages = [{"role": "user", "content": message}]
+
+        if self.dashboard.use_history:
+            query_messages = history + new_messages
+        else:
+            query_messages = new_messages
 
         api = self.dashboard.apisManager.getApi(self.dashboard.provider, self.dashboard.account)
         response = api.chat.completions.create(
             model=self.dashboard.model,
-            messages=messages
+            messages=query_messages
         )
+        
         answer = response.choices[0].message.content
+        role = response.choices[0].message.role
+        
+        response_record = [{"role": role, "content": answer}]
+        new_history = history + new_messages + response_record
 
-        return f"[{self.dashboard.provider} / {self.dashboard.model}]\n{answer}"
+        query_messages_str = json.dumps(query_messages, indent=1, default=obj2JSON)
+        response_str = json.dumps(response.model_dump(), indent=2)
+
+        protocol = f"Query: {query_messages_str}\nResponse: {response_str}"
+
+        return f"[{self.dashboard.provider} / {self.dashboard.model}]\n{answer}", protocol, new_history
