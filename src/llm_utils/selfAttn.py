@@ -1,4 +1,4 @@
-"""Self-attention mechanism classes. upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3."""
+"""Self-attention mechanism classes. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3."""
 
 import torch
 import torch.nn as nn

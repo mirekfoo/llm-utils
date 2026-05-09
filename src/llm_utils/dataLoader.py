@@ -1,4 +1,4 @@
-"""Pytorch DataLoader for LLM model. upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 2.
+"""Pytorch DataLoader for LLM model. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 2.
     Utility routines."""
 
 import torch
