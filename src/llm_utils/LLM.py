@@ -32,7 +32,22 @@ class LLM:
 
         GPTModel = get_class(read_config_arg(cfg, "GPTModel", "llm_utils.GPT.GPTModel"))
         self.gpt_model = GPTModel(cfg)
+        
+        device = self._getDevice()
+        self.gpt_model.to(device)
 
+    def _getDevice(self):
+        """Determines the device to run the model on based on configuration.
+
+        Checks the 'device' key in the configuration dictionary, defaulting to
+        'cpu' if not specified. This allows for flexible deployment on either
+        CPU or GPU.
+
+        Returns:
+            torch.device: The device to use for model computations.
+        """
+        return torch.device(read_config_arg(self.cfg, "device", "cpu"))
+    
     def query(self, prompt: str, **kwargs) -> str:
         """Queries the model with a prompt and generates a response.
 
@@ -53,8 +68,12 @@ class LLM:
 
         encoded = self.tokenizer.encode(prompt)
         encoded_tensor = torch.tensor(encoded).unsqueeze(0)
+        encoded_tensor = encoded_tensor.to(self._getDevice())
 
         if debug_log:
+            print(f"\n{50*'='}\n{22*' '}CONFIG\n{50*'='}")
+            print(f"Device: {self._getDevice()}")
+
             print(f"\n{50*'='}\n{22*' '}IN\n{50*'='}")
             print("\nInput text:", prompt)
             print("Encoded input text:", encoded)
