@@ -6,8 +6,25 @@ from pyutils.kwargs import getKwarg
 import torch
 
 class LLM:
-    def __init__(self, cfg):
+    """LLM class for interacting with a GPT-based language model.
 
+    This class encapsulates a GPT model, providing methods for tokenization,
+    text generation, and querying the model with prompts. It is based on
+    "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 4.
+
+    Attributes:
+        cfg: Configuration dictionary containing model parameters.
+        tokenizer: Tokenizer instance for encoding and decoding text.
+        gpt_model: Instance of the GPT model.
+    """
+
+    def __init__(self, cfg):
+        """Initializes the LLM instance.
+
+        Args:
+            cfg: Configuration dictionary containing model settings,
+                 such as tokenizer and model class paths.
+        """
         self.cfg = cfg
 
         self.tokenizer = create_instance(read_config_arg(cfg, "Tokenizer", "tiktoken.get_encoding('gpt2')"))
@@ -17,7 +34,19 @@ class LLM:
         self.gpt_model = GPTModel(cfg)
 
     def query(self, prompt: str, **kwargs) -> str:
+        """Queries the model with a prompt and generates a response.
 
+        Encodes the prompt, generates new tokens using the model, and decodes
+        the output back to text. Supports debug logging for inspection.
+
+        Args:
+            prompt (str): The input text prompt to generate a response for.
+            **kwargs: Additional keyword arguments. Supports 'debug_log' (bool)
+                      to enable debug output.
+
+        Returns:
+            str: The generated response text, including the original prompt.
+        """
         debug_log = getKwarg(kwargs, 'debug_log')
 
         self.gpt_model.eval()  # disable dropout
@@ -47,8 +76,20 @@ class LLM:
 
         return response
 
-
     def _generate_text_simple(self, idx, max_new_tokens, context_size):
+        """Generates text by iteratively predicting the next token.
+
+        Uses greedy decoding to select the token with the highest probability
+        at each step. Crops the context to the supported size if necessary.
+
+        Args:
+            idx: Tensor of token indices, shape (batch_size, seq_len).
+            max_new_tokens (int): Maximum number of new tokens to generate.
+            context_size (int): Maximum context length supported by the model.
+
+        Returns:
+            Tensor: The updated token indices tensor, shape (batch_size, seq_len + max_new_tokens).
+        """
         # idx is (B, T) array of indices in the current context
         for _ in range(max_new_tokens):
 
