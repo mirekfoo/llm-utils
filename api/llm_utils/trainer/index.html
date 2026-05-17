@@ -19,7 +19,7 @@
     
     
       
-        <title>llm_utils.selfAttn - llm-utils Documentation</title>
+        <title>llm_utils.trainer - llm-utils Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#llm_utilsselfattn" class="md-skip">
+        <a href="#llm_utilstrainer" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              llm_utils.selfAttn
+              llm_utils.trainer
             
           </span>
         </div>
@@ -268,118 +268,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn" class="md-nav__link">
+  <a href="#llm_utils.trainer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        selfAttn
+        trainer
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="selfAttn">
+    <nav class="md-nav" aria-label="trainer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear" class="md-nav__link">
+  <a href="#llm_utils.trainer.GPT_Trainer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SelfAttention_Linear
+        GPT_Trainer
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SelfAttention_Linear">
+    <nav class="md-nav" aria-label="GPT_Trainer">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear.forward" class="md-nav__link">
+  <a href="#llm_utils.trainer.GPT_Trainer.__init__" class="md-nav__link">
     <span class="md-ellipsis">
       
-        forward
+        __init__
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear4" class="md-nav__link">
+  <a href="#llm_utils.trainer.GPT_Trainer.plot_losses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SelfAttention_Linear4
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SelfAttention_Linear4">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear4.forward" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        forward
+        plot_losses
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear5" class="md-nav__link">
+  <a href="#llm_utils.trainer.GPT_Trainer.train_model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SelfAttention_Linear5
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SelfAttention_Linear5">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear5.forward" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        forward
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Params" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SelfAttention_Params
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SelfAttention_Params">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Params.forward" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        forward
+        train_model
       
     </span>
   </a>
@@ -413,22 +351,22 @@
 
 
 
-<h1 id="llm_utilsselfattn">llm_utils.selfAttn</h1>
+<h1 id="llm_utilstrainer">llm_utils.trainer</h1>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="llm_utils.selfAttn" class="doc doc-heading">
-            <span class="doc doc-object-name doc-module-name">llm_utils.selfAttn</span>
+<h2 id="llm_utils.trainer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">llm_utils.trainer</span>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>Self-attention mechanism classes. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3.</p>
+        <p>Trainer class for LLM model training. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 5.</p>
 
 
 
@@ -453,79 +391,72 @@
 
 
 
-<h3 id="llm_utils.selfAttn.SelfAttention_Linear" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Linear</span>
+<h3 id="llm_utils.trainer.GPT_Trainer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">GPT_Trainer</span>
 
 
 </h3>
 
 
     <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
 
 
 
-        <p>A simple self-attention mechanism implementation using linear layers for query, key, and value projections.</p>
+        <p>Trainer class for GPT-style language models.</p>
+<p>Handles the complete training pipeline including model optimization, loss computation,
+validation, and checkpointing. Implements training loops with support for distributed
+learning progress tracking and visualization.</p>
+<p>Based on: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 5.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
+<p><span class="doc-section-title">Attributes:</span></p>
     <table>
       <thead>
         <tr>
           <th>Name</th>
           <th>Type</th>
           <th>Description</th>
-          <th>Default</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
+            <td><code><span title="llm_utils.trainer.GPT_Trainer.llm">llm</span></code></td>
             <td>
-                <code>d_in</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The input dimension size.</p>
+                <p>The language model instance to train.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
             </td>
           </tr>
           <tr class="doc-section-item">
+            <td><code><span title="llm_utils.trainer.GPT_Trainer.cfg">cfg</span></code></td>
             <td>
-                <code>d_out</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The output dimension size for the queries, keys, and values.</p>
+                <p>Configuration dictionary containing training hyperparameters and settings.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
             </td>
           </tr>
           <tr class="doc-section-item">
+            <td><code><span title="llm_utils.trainer.GPT_Trainer.device">device</span></code></td>
             <td>
-                <code>qkv_bias</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If True, adds a learnable bias to the linear projections. Defaults to False.</p>
+                <p>PyTorch device for computation (CPU or GPU).</p>
               </div>
             </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><span title="llm_utils.trainer.GPT_Trainer.optimizer">optimizer</span></code></td>
             <td>
-                  <code>False</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Optimizer instance for model weight updates.</p>
+              </div>
             </td>
           </tr>
       </tbody>
@@ -555,17 +486,17 @@
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.selfAttn.SelfAttention_Linear.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
+<h4 id="llm_utils.trainer.GPT_Trainer.__init__" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">__init__</span>
 
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">__init__</span><span class="p">(</span><span class="n">llm</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Forward pass for the SelfAttention_Linear module.</p>
+        <p>Initialize the trainer with a language model and configuration.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -581,14 +512,28 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>x</code>
+                <code>llm</code>
             </td>
             <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
+                <p>Language model instance with getModel() and getTokenizer() methods.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>cfg</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Configuration dictionary with training parameters.</p>
               </div>
             </td>
             <td>
@@ -599,92 +544,28 @@
     </table>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
     </div>
 
 </div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h3 id="llm_utils.selfAttn.SelfAttention_Linear4" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Linear4</span>
-
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.selfAttn.SelfAttention_Linear4.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
+<h4 id="llm_utils.trainer.GPT_Trainer.plot_losses" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">plot_losses</span>
 
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">plot_losses</span><span class="p">(</span>
+    <span class="n">tokens_seen</span><span class="p">,</span> <span class="n">train_losses</span><span class="p">,</span> <span class="n">val_losses</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Forward pass for the SelfAttention_Linear4 module.</p>
+        <p>Plot training and validation losses over epochs and tokens seen.</p>
+<p>Creates a dual-axis plot showing loss progression against both training epochs
+and total tokens processed.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -700,40 +581,67 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>x</code>
+                <code>tokens_seen</code>
             </td>
             <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
+                  <code><span title="list">list</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
+                <p>Tokens processed at each evaluation step.</p>
               </div>
             </td>
             <td>
                 <em>required</em>
             </td>
           </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
           <tr class="doc-section-item">
+            <td>
+                <code>train_losses</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Training loss values at each evaluation step.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>val_losses</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Validation loss values at each evaluation step.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
             <td>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
+                <p>Optional arguments:
+show (bool): Whether to display the plot. Defaults to False.
+filename (str): Path to save plot image. Defaults to None (no save).</p>
               </div>
+            </td>
+            <td>
+                  <code>{}</code>
             </td>
           </tr>
       </tbody>
@@ -743,132 +651,23 @@
     </div>
 
 </div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h3 id="llm_utils.selfAttn.SelfAttention_Linear5" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Linear5</span>
-
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
-
-
-
-        <p>A simple self-attention mechanism implementation using linear layers for query, key, and value projections.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_in</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The input dimension size.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_out</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The output dimension size for the queries, keys, and values.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>qkv_bias</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If True, adds a learnable bias to the linear projections. Defaults to False.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.selfAttn.SelfAttention_Linear5.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
+<h4 id="llm_utils.trainer.GPT_Trainer.train_model" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">train_model</span>
 
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">train_model</span><span class="p">(</span><span class="n">text_data</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Forward pass for the SelfAttention_Linear5 module.</p>
+        <p>Train the language model on provided text data.</p>
+<p>Executes the main training loop over multiple epochs, computing losses,
+updating weights, evaluating on validation set, and checkpointing progress.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -884,14 +683,13 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>x</code>
+                <code>text_data</code>
             </td>
             <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
+                <p>Text corpus for training.</p>
               </div>
             </td>
             <td>
@@ -906,185 +704,18 @@
     <table>
       <thead>
         <tr>
-          <th>Type</th>
+<th>Name</th>          <th>Type</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td>
+<td><code>tuple</code></td>            <td>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h3 id="llm_utils.selfAttn.SelfAttention_Params" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Params</span>
-
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
-
-
-
-        <p>A simple self-attention mechanism implementation using learnable parameters for query, key, and value projections.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_in</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The input dimension size.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_out</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The output dimension size for the queries, keys, and values.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="llm_utils.selfAttn.SelfAttention_Params.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
-
-
-</h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Forward pass for the SelfAttention_Params module.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>x</code>
-            </td>
-            <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
+                <p>(train_losses, val_losses, track_tokens_seen) - lists tracking
+   training progress across evaluation steps.</p>
               </div>
             </td>
           </tr>

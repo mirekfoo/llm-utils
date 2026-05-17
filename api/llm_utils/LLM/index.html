@@ -19,7 +19,7 @@
     
     
       
-        <title>llm_utils.selfAttn - llm-utils Documentation</title>
+        <title>llm_utils.LLM - llm-utils Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#llm_utilsselfattn" class="md-skip">
+        <a href="#llm_utilsllm" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              llm_utils.selfAttn
+              llm_utils.LLM
             
           </span>
         </div>
@@ -268,118 +268,177 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn" class="md-nav__link">
+  <a href="#llm_utils.LLM" class="md-nav__link">
     <span class="md-ellipsis">
       
-        selfAttn
+        LLM
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="selfAttn">
+    <nav class="md-nav" aria-label="LLM">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear" class="md-nav__link">
+  <a href="#llm_utils.LLM.LLM" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SelfAttention_Linear
+        LLM
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SelfAttention_Linear">
+    <nav class="md-nav" aria-label="LLM">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear.forward" class="md-nav__link">
+  <a href="#llm_utils.LLM.LLM.__init__" class="md-nav__link">
     <span class="md-ellipsis">
       
-        forward
+        __init__
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear4" class="md-nav__link">
+  <a href="#llm_utils.LLM.LLM.generate_text_simple" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SelfAttention_Linear4
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SelfAttention_Linear4">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear4.forward" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        forward
+        generate_text_simple
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear5" class="md-nav__link">
+  <a href="#llm_utils.LLM.LLM.getModel" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SelfAttention_Linear5
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SelfAttention_Linear5">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Linear5.forward" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        forward
+        getModel
       
     </span>
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Params" class="md-nav__link">
+  <a href="#llm_utils.LLM.LLM.getModelBuffersMemSize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SelfAttention_Params
+        getModelBuffersMemSize
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="SelfAttention_Params">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#llm_utils.selfAttn.SelfAttention_Params.forward" class="md-nav__link">
+  <a href="#llm_utils.LLM.LLM.getModelLayerMemSizes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        forward
+        getModelLayerMemSizes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.getModelLayerParamNums" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getModelLayerParamNums
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.getModelMemSize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getModelMemSize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.getModelParamsNum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getModelParamsNum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.getTokenizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        getTokenizer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.loadModel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        loadModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.query" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        query
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.saveModel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        saveModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.text_decode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_decode
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.LLM.LLM.text_encode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        text_encode
       
     </span>
   </a>
@@ -413,22 +472,22 @@
 
 
 
-<h1 id="llm_utilsselfattn">llm_utils.selfAttn</h1>
+<h1 id="llm_utilsllm">llm_utils.LLM</h1>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="llm_utils.selfAttn" class="doc doc-heading">
-            <span class="doc doc-object-name doc-module-name">llm_utils.selfAttn</span>
+<h2 id="llm_utils.LLM" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">llm_utils.LLM</span>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>Self-attention mechanism classes. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3.</p>
+        <p>LLM class. Encapsulates GPTModel upon "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 4.</p>
 
 
 
@@ -453,79 +512,61 @@
 
 
 
-<h3 id="llm_utils.selfAttn.SelfAttention_Linear" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Linear</span>
+<h3 id="llm_utils.LLM.LLM" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">LLM</span>
 
 
 </h3>
 
 
     <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
 
 
 
-        <p>A simple self-attention mechanism implementation using linear layers for query, key, and value projections.</p>
+        <p>LLM class for interacting with a GPT-based language model.</p>
+<p>This class encapsulates a GPT model, providing methods for tokenization,
+text generation, and querying the model with prompts. It is based on
+"Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 4.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
+<p><span class="doc-section-title">Attributes:</span></p>
     <table>
       <thead>
         <tr>
           <th>Name</th>
           <th>Type</th>
           <th>Description</th>
-          <th>Default</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
+            <td><code><span title="llm_utils.LLM.LLM.cfg">cfg</span></code></td>
             <td>
-                <code>d_in</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The input dimension size.</p>
+                <p>Configuration dictionary containing model parameters.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
             </td>
           </tr>
           <tr class="doc-section-item">
+            <td><code><span title="llm_utils.LLM.LLM.tokenizer">tokenizer</span></code></td>
             <td>
-                <code>d_out</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The output dimension size for the queries, keys, and values.</p>
+                <p>Tokenizer instance for encoding and decoding text.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
             </td>
           </tr>
           <tr class="doc-section-item">
+            <td><code><span title="llm_utils.LLM.LLM.gpt_model">gpt_model</span></code></td>
             <td>
-                <code>qkv_bias</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If True, adds a learnable bias to the linear projections. Defaults to False.</p>
+                <p>Instance of the GPT model.</p>
               </div>
-            </td>
-            <td>
-                  <code>False</code>
             </td>
           </tr>
       </tbody>
@@ -555,17 +596,17 @@
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.selfAttn.SelfAttention_Linear.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
+<h4 id="llm_utils.LLM.LLM.__init__" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">__init__</span>
 
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">__init__</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Forward pass for the SelfAttention_Linear module.</p>
+        <p>Initializes the LLM instance.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -581,14 +622,14 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>x</code>
+                <code>cfg</code>
             </td>
             <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
+                <p>Configuration dictionary containing model settings,
+ such as tokenizer and model class paths.</p>
               </div>
             </td>
             <td>
@@ -599,92 +640,28 @@
     </table>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
     </div>
 
 </div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h3 id="llm_utils.selfAttn.SelfAttention_Linear4" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Linear4</span>
-
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.selfAttn.SelfAttention_Linear4.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
+<h4 id="llm_utils.LLM.LLM.generate_text_simple" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">generate_text_simple</span>
 
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">generate_text_simple</span><span class="p">(</span>
+    <span class="n">tokens_batch</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="p">,</span> <span class="n">context_size</span>
+<span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Forward pass for the SelfAttention_Linear4 module.</p>
+        <p>Generates text by iteratively predicting the next token.</p>
+<p>Uses greedy decoding to select the token with the highest probability
+at each step. Crops the context to the supported size if necessary.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -700,14 +677,45 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>x</code>
+                <code>tokens_batch</code>
             </td>
             <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
+                <p>Tensor of token indices, shape (batch_size, seq_len).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_new_tokens</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum number of new tokens to generate.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>context_size</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Maximum context length supported by the model.</p>
               </div>
             </td>
             <td>
@@ -722,17 +730,17 @@
     <table>
       <thead>
         <tr>
-          <th>Type</th>
+<th>Name</th>          <th>Type</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td>
+<td><code>Tensor</code></td>            <td>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
+                <p>The updated token indices tensor, shape (batch_size, seq_len + max_new_tokens).</p>
               </div>
             </td>
           </tr>
@@ -743,163 +751,23 @@
     </div>
 
 </div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h3 id="llm_utils.selfAttn.SelfAttention_Linear5" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Linear5</span>
-
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
-
-
-
-        <p>A simple self-attention mechanism implementation using linear layers for query, key, and value projections.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_in</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The input dimension size.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_out</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The output dimension size for the queries, keys, and values.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>qkv_bias</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If True, adds a learnable bias to the linear projections. Defaults to False.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.selfAttn.SelfAttention_Linear5.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
+<h4 id="llm_utils.LLM.LLM.getModel" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">getModel</span>
 
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">getModel</span><span class="p">()</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Forward pass for the SelfAttention_Linear5 module.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>x</code>
-            </td>
-            <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <p>Returns the underlying GPT model instance.</p>
+<p>This method provides access to the GPT model encapsulated within the
+LLM class, allowing for direct interactions if needed.</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -916,7 +784,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
+                <p>The GPT model instance.</p>
               </div>
             </td>
           </tr>
@@ -927,147 +795,148 @@
     </div>
 
 </div>
-
-
-
-  </div>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h3 id="llm_utils.selfAttn.SelfAttention_Params" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">SelfAttention_Params</span>
-
-
-</h3>
-
-
-    <div class="doc doc-contents ">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
-
-
-
-        <p>A simple self-attention mechanism implementation using learnable parameters for query, key, and value projections.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_in</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The input dimension size.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_out</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The output dimension size for the queries, keys, and values.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-children">
-
-
-
-
-
-
-
-
-
 
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.selfAttn.SelfAttention_Params.forward" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">forward</span>
+<h4 id="llm_utils.LLM.LLM.getModelBuffersMemSize" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">getModelBuffersMemSize</span>
 
 
 </h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">getModelBuffersMemSize</span><span class="p">()</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Forward pass for the SelfAttention_Params module.</p>
+        <p>Calculates the total memory size of the GPT model buffers in bytes.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.getModelLayerMemSizes" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">getModelLayerMemSizes</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">getModelLayerMemSizes</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Returns a dictionary mapping each parameter name to its memory size in bytes.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.getModelLayerParamNums" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">getModelLayerParamNums</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">getModelLayerParamNums</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Returns a dictionary mapping each parameter name to its number of elements.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.getModelMemSize" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">getModelMemSize</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">getModelMemSize</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Calculates the total memory size of the GPT model parameters in bytes.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.getModelParamsNum" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">getModelParamsNum</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">getModelParamsNum</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Calculates the total number of parameters in the GPT model.</p>
+<p>This method iterates over all parameters in the GPT model and sums
+their sizes to compute the total parameter count, which is a common
+metric for understanding model complexity.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Type</th>
+<th>Name</th>          <th>Type</th>
           <th>Description</th>
-          <th>Default</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td>
-                <code>x</code>
-            </td>
-            <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
+<td><code>int</code></td>            <td>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
+                <p>The total number of parameters in the GPT model.</p>
               </div>
-            </td>
-            <td>
-                <em>required</em>
             </td>
           </tr>
       </tbody>
     </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.getTokenizer" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">getTokenizer</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">getTokenizer</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Returns the tokenizer instance used for encoding and decoding text.</p>
+<p>This method provides access to the tokenizer, which is essential for
+converting between raw text and token IDs that the model can process.</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -1084,13 +953,379 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
+                <p>The tokenizer instance.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
 
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.loadModel" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">loadModel</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">loadModel</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Loads the GPT model's state dictionary from the specified path.</p>
+<p>This method allows for restoring a previously saved model, enabling
+continued training or inference.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The file path from which to load the model state dictionary.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.query" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">query</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">query</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Queries the model with a prompt and generates a response.</p>
+<p>Encodes the prompt, generates new tokens using the model, and decodes
+the output back to text. Supports debug logging for inspection.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>prompt</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The input text prompt to generate a response for.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional keyword arguments. Supports 'debug_log' (bool)
+      to enable debug output.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The generated response text, including the original prompt.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.saveModel" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">saveModel</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">saveModel</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Saves the GPT model's state dictionary to the specified path.</p>
+<p>This method allows for persisting the trained model weights, enabling
+later loading and inference without retraining.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The file path where the model state dictionary will be saved.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.text_decode" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">text_decode</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">text_decode</span><span class="p">(</span><span class="n">encoded_tensor</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Decodes token IDs back into human-readable text.</p>
+<p>Converts a tensor of token indices into the original text string using the tokenizer.
+Handles batch dimensions by squeezing the tensor before decoding.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>encoded_tensor</code>
+            </td>
+            <td>
+                  <code><span title="torch.Tensor">Tensor</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Token indices as a tensor, typically of shape (1, seq_len)
+                          from a single batch example.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>str</code></td>            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The decoded text string.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>This method assumes the input tensor is on CPU or will be moved to CPU for decoding.
+The squeeze(0) operation removes the batch dimension before converting to a list.</p>
+</details>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.LLM.LLM.text_encode" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">text_encode</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">text_encode</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Encodes text into token IDs and returns both tensor and list representations.</p>
+<p>Converts raw text into token indices using the tokenizer, then creates a tensor
+representation with batch dimension. The tensor is moved to the appropriate device
+(CPU or GPU) for model processing.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>text</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The input text to encode.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>tuple</code></td>            <td>
+                  <code><span title="torch.Tensor">Tensor</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A tuple containing:
+- encoded_tensor (torch.Tensor): Token indices as a 2D tensor with shape (1, seq_len),
+  located on the model's device.
+- encoded (list): Token indices as a list for reference.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="note" open>
+  <summary>Note</summary>
+  <p>The endoftext token '&lt;|endoftext|&gt;' is allowed as a special token during encoding.</p>
+</details>
 
     </div>
 

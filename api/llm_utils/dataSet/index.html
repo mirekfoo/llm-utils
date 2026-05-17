@@ -19,7 +19,7 @@
     
     
       
-        <title>llm_utils.dataLoader - llm-utils Documentation</title>
+        <title>llm_utils.dataSet - llm-utils Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#llm_utilsdataloader" class="md-skip">
+        <a href="#llm_utilsdataset" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              llm_utils.dataLoader
+              llm_utils.dataSet
             
           </span>
         </div>
@@ -268,25 +268,81 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#llm_utils.dataLoader" class="md-nav__link">
+  <a href="#llm_utils.dataSet" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dataLoader
+        dataSet
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="dataLoader">
+    <nav class="md-nav" aria-label="dataSet">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.dataLoader.createDataLoader" class="md-nav__link">
+  <a href="#llm_utils.dataSet.GPT_Dataset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        createDataLoader
+        GPT_Dataset
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="GPT_Dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.dataSet.GPT_Dataset.__getitem__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __getitem__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.dataSet.GPT_Dataset.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="__init__">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.dataSet.GPT_Dataset.__init__--parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.dataSet.GPT_Dataset.__len__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __len__
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -312,23 +368,74 @@
 
 
 
-<h1 id="llm_utilsdataloader">llm_utils.dataLoader</h1>
+<h1 id="llm_utilsdataset">llm_utils.dataSet</h1>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="llm_utils.dataLoader" class="doc doc-heading">
-            <span class="doc doc-object-name doc-module-name">llm_utils.dataLoader</span>
+<h2 id="llm_utils.dataSet" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">llm_utils.dataSet</span>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>Pytorch DataLoader for LLM model. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 2.
-Utility routines.</p>
+        <p>Dataset class for LLM model training. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 2.
+Utility routines for colorized print of data batches.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="llm_utils.dataSet.GPT_Dataset" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">GPT_Dataset</span>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="torch.utils.data.Dataset">Dataset</span></code></p>
+
+
+
+        <p>A custom dataset class for preparing text data for GPT model training.
+Args:
+    txt (str): The input text to be tokenized and split into sequences.
+    tokenizer (Tokenizer): The tokenizer to convert text into token IDs.
+    max_length (int): The maximum length of each input sequence.
+    stride (int): The step size to move the window for creating sequences.
+Attributes:
+    tokenizer (Tokenizer): The tokenizer used for encoding the text.
+    input_ids (List[torch.Tensor]): List of input token ID sequences.
+    target_ids (List[torch.Tensor]): List of target token ID sequences.
+Methods:
+    <strong>len</strong>(): Returns the number of sequences in the dataset.
+    <strong>getitem</strong>(idx): Returns the input and target sequences at the specified index.</p>
+
 
 
 
@@ -353,20 +460,17 @@ Utility routines.</p>
 <div class="doc doc-object doc-function">
 
 
-<h3 id="llm_utils.dataLoader.createDataLoader" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">createDataLoader</span>
+<h4 id="llm_utils.dataSet.GPT_Dataset.__getitem__" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">__getitem__</span>
 
 
-</h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">createDataLoader</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">__getitem__</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Create a PyTorch DataLoader for LLM model training.</p>
-<p>Initializes a DataLoader with a GPT dataset using configuration parameters.
-The function dynamically instantiates a dataset class and wraps it in a DataLoader
-with specified batch processing and shuffling options.</p>
+        <p>Retrieve a single (input, target) tensor pair by index.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -382,38 +486,15 @@ with specified batch processing and shuffling options.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>txt</code>
+                <code>idx</code>
             </td>
             <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Input text data for the dataset.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>cfg</code>
-            </td>
-            <td>
-                  <code><span title="dict">dict</span></code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Configuration dictionary containing parameters for dataset and dataloader.
-Expected keys:
-- context_length (int, optional): Maximum sequence length. Defaults to 1024.
-- GPT_Dataset (str, optional): Class path for dataset. Defaults to 
-  "llm_utils.dataSet.GPT_Dataset".
-- batch_size (int, optional): Number of samples per batch. Defaults to 4.
-- shuffle (bool, optional): Whether to shuffle data. Defaults to True.
-- drop_last (bool, optional): Drop incomplete batches. Defaults to True.
-- num_workers (int, optional): Number of data loading workers. Defaults to 0.</p>
+                <p>Index of the sequence pair to retrieve. Must be in the
+range [0, len(self)).</p>
               </div>
             </td>
             <td>
@@ -438,7 +519,9 @@ Expected keys:
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.utils.data.DataLoader: Configured DataLoader for model training.</p>
+                <p>tuple[torch.Tensor, torch.Tensor]: A tuple containing the input
+token ids tensor and the corresponding target token ids
+tensor for the given index.</p>
               </div>
             </td>
           </tr>
@@ -446,9 +529,106 @@ Expected keys:
     </table>
 
 
+<details class="notes" open>
+  <summary>Notes</summary>
+  <ul>
+<li>Both tensors are created during dataset initialization and are
+  returned without further copying.</li>
+<li>If idx is out of range, the underlying list access will raise
+  IndexError.</li>
+</ul>
+</details>
+
     </div>
 
 </div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.dataSet.GPT_Dataset.__init__" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">__init__</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">__init__</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize dataset: tokenize text and build input/target tensors.</p>
+<h6 id="llm_utils.dataSet.GPT_Dataset.__init__--parameters">Parameters</h6>
+<p>txt : str
+    Raw text to tokenize.
+cfg : mapping-like
+    Configuration as described in the class docstring.</p>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.dataSet.GPT_Dataset.__len__" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">__len__</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">__len__</span><span class="p">()</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Return the number of sequence samples in the dataset.</p>
+<p>This method implements the Dataset protocol required by PyTorch and
+reports how many (input, target) sequence pairs are available. The
+length is determined by the number of input_id tensors produced when
+the raw text was tokenized and split according to max_length and
+stride configuration parameters.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>int</code></td>            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of (input, target) sequence pairs in the dataset.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<details class="notes" open>
+  <summary>Notes</summary>
+  <p>The returned value may be zero if the tokenized text was shorter
+than the configured max_length or if no chunks were produced.</p>
+</details>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
 
 
 

@@ -19,7 +19,7 @@
     
     
       
-        <title>llm_utils.dataLoader - llm-utils Documentation</title>
+        <title>llm_utils.normalization - llm-utils Documentation</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#llm_utilsdataloader" class="md-skip">
+        <a href="#llm_utilsnormalization" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              llm_utils.dataLoader
+              llm_utils.normalization
             
           </span>
         </div>
@@ -268,25 +268,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#llm_utils.dataLoader" class="md-nav__link">
+  <a href="#llm_utils.normalization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        dataLoader
+        normalization
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="dataLoader">
+    <nav class="md-nav" aria-label="normalization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.dataLoader.createDataLoader" class="md-nav__link">
+  <a href="#llm_utils.normalization.LayerNorm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        createDataLoader
+        LayerNorm
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="LayerNorm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.normalization.LayerNorm.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        __init__
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.normalization.LayerNorm.forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        forward
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -312,23 +340,66 @@
 
 
 
-<h1 id="llm_utilsdataloader">llm_utils.dataLoader</h1>
+<h1 id="llm_utilsnormalization">llm_utils.normalization</h1>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="llm_utils.dataLoader" class="doc doc-heading">
-            <span class="doc doc-object-name doc-module-name">llm_utils.dataLoader</span>
+<h2 id="llm_utils.normalization" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">llm_utils.normalization</span>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>Pytorch DataLoader for LLM model. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 2.
-Utility routines.</p>
+        <p>Normalization block. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 4.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="llm_utils.normalization.LayerNorm" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">LayerNorm</span>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
+
+
+
+        <p>Layer normalization module.</p>
+<p>This module implements layer normalization across the last dimension of the
+input tensor. It computes an affine transform of normalized activations
+using learnable scale and shift parameters. This is useful in transformer
+blocks and other architectures that require input normalization without
+depending on batch statistics.</p>
+
 
 
 
@@ -353,20 +424,17 @@ Utility routines.</p>
 <div class="doc doc-object doc-function">
 
 
-<h3 id="llm_utils.dataLoader.createDataLoader" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">createDataLoader</span>
+<h4 id="llm_utils.normalization.LayerNorm.__init__" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">__init__</span>
 
 
-</h3>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">createDataLoader</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">__init__</span><span class="p">(</span><span class="n">emb_dim</span><span class="p">)</span>
 </code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Create a PyTorch DataLoader for LLM model training.</p>
-<p>Initializes a DataLoader with a GPT dataset using configuration parameters.
-The function dynamically instantiates a dataset class and wraps it in a DataLoader
-with specified batch processing and shuffling options.</p>
+        <p>Initialize the layer normalization module.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -382,38 +450,68 @@ with specified batch processing and shuffling options.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>txt</code>
+                <code>emb_dim</code>
             </td>
             <td>
-                  <code><span title="str">str</span></code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input text data for the dataset.</p>
+                <p>The dimensionality of the last axis of the input
+tensor. This determines the shape of the learnable scale and
+shift parameters.</p>
               </div>
             </td>
             <td>
                 <em>required</em>
             </td>
           </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.normalization.LayerNorm.forward" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">forward</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Apply layer normalization to the input tensor.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>cfg</code>
+                <code>x</code>
             </td>
             <td>
-                  <code><span title="dict">dict</span></code>
+                  <code><span title="torch.Tensor">Tensor</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Configuration dictionary containing parameters for dataset and dataloader.
-Expected keys:
-- context_length (int, optional): Maximum sequence length. Defaults to 1024.
-- GPT_Dataset (str, optional): Class path for dataset. Defaults to 
-  "llm_utils.dataSet.GPT_Dataset".
-- batch_size (int, optional): Number of samples per batch. Defaults to 4.
-- shuffle (bool, optional): Whether to shuffle data. Defaults to True.
-- drop_last (bool, optional): Drop incomplete batches. Defaults to True.
-- num_workers (int, optional): Number of data loading workers. Defaults to 0.</p>
+                <p>Input tensor of shape (..., emb_dim), where the
+last dimension corresponds to the embedding dimension.</p>
               </div>
             </td>
             <td>
@@ -438,7 +536,7 @@ Expected keys:
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.utils.data.DataLoader: Configured DataLoader for model training.</p>
+                <p>torch.Tensor: Normalized tensor with the same shape as the input.</p>
               </div>
             </td>
           </tr>
@@ -449,6 +547,15 @@ Expected keys:
     </div>
 
 </div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
 
 
 
