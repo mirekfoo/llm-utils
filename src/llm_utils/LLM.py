@@ -123,12 +123,46 @@ class LLM:
         torch.cuda.empty_cache() # usually unnecessary, but can help with memory fragmentation issues on GPU
 
     def text_encode(self, text: str) -> torch.Tensor:
+        """Encodes text into token IDs and returns both tensor and list representations.
+
+        Converts raw text into token indices using the tokenizer, then creates a tensor
+        representation with batch dimension. The tensor is moved to the appropriate device
+        (CPU or GPU) for model processing.
+
+        Args:
+            text (str): The input text to encode.
+
+        Returns:
+            tuple: A tuple containing:
+                - encoded_tensor (torch.Tensor): Token indices as a 2D tensor with shape (1, seq_len),
+                  located on the model's device.
+                - encoded (list): Token indices as a list for reference.
+
+        Note:
+            The endoftext token '<|endoftext|>' is allowed as a special token during encoding.
+        """
         encoded = self.tokenizer.encode(text, allowed_special={'<|endoftext|>'})
         encoded_tensor = torch.tensor(encoded).unsqueeze(0)
         encoded_tensor = encoded_tensor.to(self._getDevice())
         return (encoded_tensor, encoded)
 
     def text_decode(self, encoded_tensor : torch.Tensor) -> str:
+        """Decodes token IDs back into human-readable text.
+
+        Converts a tensor of token indices into the original text string using the tokenizer.
+        Handles batch dimensions by squeezing the tensor before decoding.
+
+        Args:
+            encoded_tensor (torch.Tensor): Token indices as a tensor, typically of shape (1, seq_len)
+                                          from a single batch example.
+
+        Returns:
+            str: The decoded text string.
+
+        Note:
+            This method assumes the input tensor is on CPU or will be moved to CPU for decoding.
+            The squeeze(0) operation removes the batch dimension before converting to a list.
+        """
         return self.tokenizer.decode(encoded_tensor.squeeze(0).tolist())
     
     def query(self, prompt: str, **kwargs) -> str:

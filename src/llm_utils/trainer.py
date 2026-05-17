@@ -8,14 +8,42 @@ from llm_utils.dataLoader import createDataLoader
 import matplotlib.pyplot as plt
 
 class GPT_Trainer:
+    """Trainer class for GPT-style language models.
+    
+    Handles the complete training pipeline including model optimization, loss computation,
+    validation, and checkpointing. Implements training loops with support for distributed
+    learning progress tracking and visualization.
+    
+    Based on: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 5.
+    
+    Attributes:
+        llm: The language model instance to train.
+        cfg: Configuration dictionary containing training hyperparameters and settings.
+        device: PyTorch device for computation (CPU or GPU).
+        optimizer: Optimizer instance for model weight updates.
+    """
 
     def __init__(self, llm, cfg):
+        """Initialize the trainer with a language model and configuration.
+        
+        Args:
+            llm: Language model instance with getModel() and getTokenizer() methods.
+            cfg: Configuration dictionary with training parameters.
+        """
         self.llm = llm
         self.cfg = cfg
         self.device = torch.device(read_config_arg(self.cfg, "device", "cpu"))
         self.optimizer = self._create_optimizer()
 
     def _create_optimizer(self):
+        """Create the optimizer for model training.
+        
+        Retrieves optimizer class and hyperparameters from configuration, then
+        instantiates it with the model parameters.
+        
+        Returns:
+            torch.optim.Optimizer: Configured optimizer instance.
+        """
         model = self.llm.getModel()
         Optimizer = get_class(read_config_arg(self.cfg, "Optimizer", "torch.optim.AdamW"))
         learning_rate = read_config_arg(self.cfg, "learning_rate", 5e-4)
@@ -23,12 +51,38 @@ class GPT_Trainer:
         return Optimizer(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
 
     def _calc_loss_batch(self, input_batch, target_batch, model):
+        """Calculate cross-entropy loss for a batch.
+        
+        Moves data to the appropriate device, computes model logits, and calculates
+        cross-entropy loss between predictions and targets.
+        
+        Args:
+            input_batch (torch.Tensor): Input token batch.
+            target_batch (torch.Tensor): Target token batch.
+            model: Language model for generating logits.
+            
+        Returns:
+            torch.Tensor: Scalar loss value.
+        """
         input_batch, target_batch = input_batch.to(self.device), target_batch.to(self.device)
         logits = model(input_batch)
         loss = torch.nn.functional.cross_entropy(logits.flatten(0, 1), target_batch.flatten())
         return loss
 
     def _calc_loss_loader(self, data_loader, model, num_batches=None):
+        """Calculate average loss over a data loader.
+        
+        Computes loss across specified number of batches, averaging the results.
+        Defaults to all batches if num_batches is not specified.
+        
+        Args:
+            data_loader: PyTorch DataLoader instance.
+            model: Language model for inference.
+            num_batches (int, optional): Number of batches to evaluate. Defaults to all.
+            
+        Returns:
+            float: Average loss across evaluated batches.
+        """
         total_loss = 0.
         if len(data_loader) == 0:
             return float("nan")
@@ -44,8 +98,21 @@ class GPT_Trainer:
                 break
         return total_loss / num_batches
 
-
     def _evaluate_model(self, model, train_loader, val_loader, eval_iter):
+        """Evaluate model on training and validation datasets.
+        
+        Sets model to evaluation mode, computes losses without gradient calculation,
+        then returns to training mode.
+        
+        Args:
+            model: Language model to evaluate.
+            train_loader: Training data loader.
+            val_loader: Validation data loader.
+            eval_iter (int): Number of batches to evaluate per dataset.
+            
+        Returns:
+            tuple: (train_loss, val_loss) as floats.
+        """
         model.eval()
         with torch.no_grad():
             train_loss = self._calc_loss_loader(train_loader, model, num_batches=eval_iter)
@@ -53,8 +120,16 @@ class GPT_Trainer:
         model.train()
         return train_loss, val_loss    
 
-
     def _checkpoint(self, model, checkpoint_prompt):
+        """Generate and print sample text for model checkpoint evaluation.
+        
+        Uses the model in evaluation mode to generate text from a prompt, providing
+        qualitative feedback during training.
+        
+        Args:
+            model: Language model for text generation.
+            checkpoint_prompt (str): Initial prompt text for generation.
+        """
         model.eval()
         context_size = model.pos_emb.weight.shape[0]
         encoded, _ = self.llm.text_encode(checkpoint_prompt)
@@ -65,25 +140,58 @@ class GPT_Trainer:
             print(decoded_text.replace("\n", " "))  # Compact print format
         model.train()
 
-
     def _calcDataSplitIdx(self, data_length):
+        """Calculate the split index for train/validation split.
+        
+        Args:
+            data_length (int): Total length of dataset.
+            
+        Returns:
+            int: Index for splitting training and validation data.
+        """
         train_ratio = read_config_arg(self.cfg, "train_ratio", 0.9)
         split_idx = int(train_ratio * data_length)
         return split_idx
 
     def _createTrainLoader(self, text_data):
+        """Create training data loader from text data.
+        
+        Args:
+            text_data: Text data to split and load for training.
+            
+        Returns:
+            torch.utils.data.DataLoader: Training data loader.
+        """
         split_idx = self._calcDataSplitIdx(len(text_data))
         train_loader = createDataLoader(text_data[:split_idx], self.cfg)
         return train_loader
 
     def _createValLoader(self, text_data):
+        """Create validation data loader from text data.
+        
+        Args:
+            text_data: Text data to split and load for validation.
+            
+        Returns:
+            torch.utils.data.DataLoader: Validation data loader.
+        """
         split_idx = self._calcDataSplitIdx(len(text_data))
         val_loader = createDataLoader(text_data[split_idx:], self.cfg)
         return val_loader
 
-
     def train_model(self, text_data):
-                
+        """Train the language model on provided text data.
+        
+        Executes the main training loop over multiple epochs, computing losses,
+        updating weights, evaluating on validation set, and checkpointing progress.
+        
+        Args:
+            text_data: Text corpus for training.
+            
+        Returns:
+            tuple: (train_losses, val_losses, track_tokens_seen) - lists tracking
+                   training progress across evaluation steps.
+        """
         num_epochs = read_config_arg(self.cfg, "num_epochs", 10)
         eval_freq = read_config_arg(self.cfg, "eval_freq", 5) 
         eval_iter = read_config_arg(self.cfg, "eval_iter", 1) 
@@ -127,9 +235,20 @@ class GPT_Trainer:
 
         return train_losses, val_losses, track_tokens_seen        
 
-
     def plot_losses(self, tokens_seen, train_losses, val_losses, **kwargs):
-    
+        """Plot training and validation losses over epochs and tokens seen.
+        
+        Creates a dual-axis plot showing loss progression against both training epochs
+        and total tokens processed.
+        
+        Args:
+            tokens_seen (list): Tokens processed at each evaluation step.
+            train_losses (list): Training loss values at each evaluation step.
+            val_losses (list): Validation loss values at each evaluation step.
+            **kwargs: Optional arguments:
+                show (bool): Whether to display the plot. Defaults to False.
+                filename (str): Path to save plot image. Defaults to None (no save).
+        """
         show = getKwarg(kwargs, "show", False)
         filename = getKwarg(kwargs, "filename", None)
 
