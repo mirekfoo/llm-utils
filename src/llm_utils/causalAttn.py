@@ -1,4 +1,4 @@
-"""Causal-attention mechanism classes. upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3.5"""
+"""Causal-attention mechanism classes. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3.5"""
 
 import torch
 import torch.nn as nn
