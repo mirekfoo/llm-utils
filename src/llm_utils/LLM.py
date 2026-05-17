@@ -28,7 +28,6 @@ class LLM:
         self.cfg = cfg
 
         self.tokenizer = create_instance(read_config_arg(cfg, "Tokenizer", "tiktoken.get_encoding('gpt2')"))
-        #tokenizer = tiktoken.get_encoding("gpt2")
 
         GPTModel = get_class(read_config_arg(cfg, "GPTModel", "llm_utils.GPT.GPTModel"))
         self.gpt_model = GPTModel(cfg)
@@ -47,6 +46,90 @@ class LLM:
             torch.device: The device to use for model computations.
         """
         return torch.device(read_config_arg(self.cfg, "device", "cpu"))
+
+    def getModelParamsNum(self):
+        """Calculates the total number of parameters in the GPT model.
+
+        This method iterates over all parameters in the GPT model and sums
+        their sizes to compute the total parameter count, which is a common
+        metric for understanding model complexity.
+
+        Returns:
+            int: The total number of parameters in the GPT model.
+        """
+        return sum(p.numel() for p in self.gpt_model.parameters())
+
+    def getModelLayerParamNums(self):
+        """Returns a dictionary mapping each parameter name to its number of elements."""
+        return {name: p.numel() for name, p in self.gpt_model.named_parameters()}
+
+    def getModelMemSize(self):
+        """Calculates the total memory size of the GPT model parameters in bytes."""
+        return sum(p.numel() * p.element_size() for p in self.gpt_model.parameters())
+
+    def getModelLayerMemSizes(self):
+        """Returns a dictionary mapping each parameter name to its memory size in bytes."""
+        return {name: p.numel() * p.element_size() for name, p in self.gpt_model.named_parameters()}
+    
+    def getModelBuffersMemSize(self):
+        """Calculates the total memory size of the GPT model buffers in bytes."""
+        return sum(b.numel() * b.element_size() for b in self.gpt_model.buffers())
+    
+    def getModel(self):
+        """Returns the underlying GPT model instance.
+
+        This method provides access to the GPT model encapsulated within the
+        LLM class, allowing for direct interactions if needed.
+
+        Returns:
+            The GPT model instance.
+        """
+        return self.gpt_model
+    
+    def getTokenizer(self):
+        """Returns the tokenizer instance used for encoding and decoding text.
+
+        This method provides access to the tokenizer, which is essential for
+        converting between raw text and token IDs that the model can process.
+
+        Returns:
+            The tokenizer instance.
+        """
+        return self.tokenizer
+    
+    def saveModel(self, path):
+        """Saves the GPT model's state dictionary to the specified path.
+
+        This method allows for persisting the trained model weights, enabling
+        later loading and inference without retraining.
+
+        Args:
+            path (str): The file path where the model state dictionary will be saved.
+        """
+        torch.save(self.gpt_model.state_dict(), path)
+
+    def loadModel(self, path):
+        """Loads the GPT model's state dictionary from the specified path.
+
+        This method allows for restoring a previously saved model, enabling
+        continued training or inference.
+
+        Args:
+            path (str): The file path from which to load the model state dictionary.
+        """
+        state_dict = torch.load(path, weights_only=True, map_location="cpu")
+        self.gpt_model.load_state_dict(state_dict)
+        del state_dict
+        torch.cuda.empty_cache() # usually unnecessary, but can help with memory fragmentation issues on GPU
+
+    def text_encode(self, text: str) -> torch.Tensor:
+        encoded = self.tokenizer.encode(text, allowed_special={'<|endoftext|>'})
+        encoded_tensor = torch.tensor(encoded).unsqueeze(0)
+        encoded_tensor = encoded_tensor.to(self._getDevice())
+        return (encoded_tensor, encoded)
+
+    def text_decode(self, encoded_tensor : torch.Tensor) -> str:
+        return self.tokenizer.decode(encoded_tensor.squeeze(0).tolist())
     
     def query(self, prompt: str, **kwargs) -> str:
         """Queries the model with a prompt and generates a response.
@@ -66,9 +149,7 @@ class LLM:
 
         self.gpt_model.eval()  # disable dropout
 
-        encoded = self.tokenizer.encode(prompt)
-        encoded_tensor = torch.tensor(encoded).unsqueeze(0)
-        encoded_tensor = encoded_tensor.to(self._getDevice())
+        encoded_tensor, encoded = self.text_encode(prompt)
 
         if debug_log:
             print(f"\n{50*'='}\n{22*' '}CONFIG\n{50*'='}")
@@ -82,10 +163,10 @@ class LLM:
         out = self._generate_text_simple(
             #model=model,
             idx=encoded_tensor,
-            max_new_tokens=10,
+            max_new_tokens=self.cfg["max_tokens"],
             context_size=self.cfg["context_length"]
         )
-        response = self.tokenizer.decode(out.squeeze(0).tolist())
+        response = self.text_decode(out)
 
         if debug_log:
             print(f"\n\n{50*'='}\n{22*' '}OUT\n{50*'='}")
@@ -95,14 +176,14 @@ class LLM:
 
         return response
 
-    def _generate_text_simple(self, idx, max_new_tokens, context_size):
+    def generate_text_simple(self, tokens_batch, max_new_tokens, context_size):
         """Generates text by iteratively predicting the next token.
 
         Uses greedy decoding to select the token with the highest probability
         at each step. Crops the context to the supported size if necessary.
 
         Args:
-            idx: Tensor of token indices, shape (batch_size, seq_len).
+            tokens_batch: Tensor of token indices, shape (batch_size, seq_len).
             max_new_tokens (int): Maximum number of new tokens to generate.
             context_size (int): Maximum context length supported by the model.
 
@@ -115,20 +196,20 @@ class LLM:
             # Crop current context if it exceeds the supported context size
             # E.g., if LLM supports only 5 tokens, and the context size is 10
             # then only the last 5 tokens are used as context
-            idx_cond = idx[:, -context_size:]
+            tokens_batch_context = tokens_batch[:, -context_size:]
 
             # Get the predictions
             with torch.no_grad():
-                logits = self.gpt_model(idx_cond)
+                logits = self.gpt_model(tokens_batch_context)
 
             # Focus only on the last time step
             # (batch, n_token, vocab_size) becomes (batch, vocab_size)
             logits = logits[:, -1, :]
 
             # Get the idx of the vocab entry with the highest logits value
-            idx_next = torch.argmax(logits, dim=-1, keepdim=True)  # (batch, 1)
+            next_token = torch.argmax(logits, dim=-1, keepdim=True)  # (batch, 1)
 
             # Append sampled index to the running sequence
-            idx = torch.cat((idx, idx_next), dim=1)  # (batch, n_tokens+1)
+            tokens_batch = torch.cat((tokens_batch, next_token), dim=1)  # (batch, n_tokens+1)
 
-        return idx
+        return tokens_batch
