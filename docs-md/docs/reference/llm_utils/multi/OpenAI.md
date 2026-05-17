@@ -3,7 +3,7 @@ sidebar_label: OpenAI
 title: llm_utils.multi.OpenAI
 ---
 
-Utilities for multiple OpenAI-compatible LLM providers, including:
+Utilities for multiple OpenAI-compatible LLM providers. Including:
 - LLMApisManager: manage provider/account API connections.
 - ModelSelection: select and cache available models per provider/account.
 - Dashboard: build a multi-provider/account model selection dashboard.

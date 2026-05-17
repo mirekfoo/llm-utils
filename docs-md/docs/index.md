@@ -1,6 +1,6 @@
 | Page | Info |
 | --- | --- |
-| [llm_utils.multi.OpenAI](reference/llm_utils/multi/OpenAI.md) | Utilities for multiple OpenAI-compatible LLM providers, including: - LLMApisManager: manage provider/account API connections. |
+| [llm_utils.multi.OpenAI](reference/llm_utils/multi/OpenAI.md) | Utilities for multiple OpenAI-compatible LLM providers. |
 | [llm_utils.GPT](reference/llm_utils/GPT.md) | GPT Model. |
 | [llm_utils.LLM](reference/llm_utils/LLM.md) | LLM class. |
 | [llm_utils.activation](reference/llm_utils/activation.md) | Activation function. |
