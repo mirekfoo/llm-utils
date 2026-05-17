@@ -32,6 +32,7 @@ Utility colorized print of data batches.|`llm_utils.printDataset`|`print_data_se
 
 Utility|Module
 ---|---
+Utilities for multiple OpenAI-compatible LLM providers usage.|`llm_utils.multi.OpenAI`|`LLMApisManager`, `ModelSelection`, `Dashboard`, `Chat`
 
 # Documentation
 
