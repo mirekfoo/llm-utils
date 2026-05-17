@@ -1,12 +1,14 @@
 # llm-utils
 Utilities for LLM construction and usage.
+
 LLM Building Blocks.
+
 Upon "Build a Large Language Model (From Scratch)" by Sebastian Raschka".
 
 ## LLM building blocks
 
 Utility|Module|Class(es)/Function(s)
----|---
+---|---|---
 Self-attention mechanism classes. | `llm_utils.selfAttn`
 Causal-attention mechanism classes. | `llm_utils.causalAttn`|
 Activation functions.|`llm_utils.activation`|`GELU`
