@@ -50,4 +50,4 @@ push = true
 
 [tool.bumpver.file_patterns]
 "pyproject.toml" = ['version = "{version}"']
-"src/pyutils/__init__.py" = ['__version__ = "{version}"']
+"src/llm_utils/__init__.py" = ['__version__ = "{version}"']
