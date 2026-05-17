@@ -3,7 +3,7 @@ sidebar_label: selfAttn
 title: llm_utils.selfAttn
 ---
 
-Self-attention mechanism classes. upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 3.
+Self-attention mechanism classes. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 3.
 
 ## SelfAttention\_Params Objects
 

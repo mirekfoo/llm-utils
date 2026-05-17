@@ -3,72 +3,36 @@ sidebar_label: dataLoader
 title: llm_utils.dataLoader
 ---
 
-Pytorch DataLoader for LLM model. upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 2.
+Pytorch DataLoader for LLM model. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 2.
 Utility routines.
 
-## GPTDatasetV1 Objects
+#### createDataLoader
 
 ```python
-class GPTDatasetV1(Dataset)
+def createDataLoader(txt, cfg)
 ```
 
-A custom dataset class for preparing text data for GPT model training.
+Create a PyTorch DataLoader for LLM model training.
+
+Initializes a DataLoader with a GPT dataset using configuration parameters.
+The function dynamically instantiates a dataset class and wraps it in a DataLoader
+with specified batch processing and shuffling options.
 
 **Arguments**:
 
-- `txt` _str_ - The input text to be tokenized and split into sequences.
-- `tokenizer` _Tokenizer_ - The tokenizer to convert text into token IDs.
-- `max_length` _int_ - The maximum length of each input sequence.
-- `stride` _int_ - The step size to move the window for creating sequences.
-
-**Attributes**:
-
-- `tokenizer` _Tokenizer_ - The tokenizer used for encoding the text.
-- `input_ids` _List[torch.Tensor]_ - List of input token ID sequences.
-- `target_ids` _List[torch.Tensor]_ - List of target token ID sequences.
-
-**Methods**:
-
-- `__len__()` - Returns the number of sequences in the dataset.
-- `__getitem__(idx)` - Returns the input and target sequences at the specified index.
-
-#### print\_data\_set
-
-```python
-def print_data_set(inputs, targets, tokenizer)
-```
-
-Prints the input and target data sets in a colorized and formatted manner.
-
-**Arguments**:
-
-- `inputs` _torch.Tensor_ - The input tensor data.
-- `targets` _torch.Tensor_ - The target tensor data.
-- `tokenizer` _Tokenizer_ - The tokenizer used to decode and colorize the data.
-  The function performs the following steps:
-  1. Converts the input and target tensors to lists.
-  2. Colorizes the input and target data using the tokenizer.
-  3. Decodes the input data using the tokenizer.
-  4. Calculates the necessary widths for formatting the output.
-  5. Prints the input data, colorized input data, and target data in a formatted manner.
-
-#### print\_data\_batch
-
-```python
-def print_data_batch(data_batch, tokenizer)
-```
-
-Prints a batch of data using the provided tokenizer.
-
-**Arguments**:
-
-- `data_batch` _tuple_ - A tuple containing two elements:
-  - inputs: The input data.
-  - targets: The target data.
-- `tokenizer` - A tokenizer object used to decode the input and target data.
+- `txt` _str_ - Input text data for the dataset.
+- `cfg` _dict_ - Configuration dictionary containing parameters for dataset and dataloader.
+  Expected keys:
+  - context_length (int, optional): Maximum sequence length. Defaults to 1024.
+  - GPT_Dataset (str, optional): Class path for dataset. Defaults to
+  &quot;llm_utils.dataSet.GPT_Dataset&quot;.
+  - batch_size (int, optional): Number of samples per batch. Defaults to 4.
+  - shuffle (bool, optional): Whether to shuffle data. Defaults to True.
+  - drop_last (bool, optional): Drop incomplete batches. Defaults to True.
+  - num_workers (int, optional): Number of data loading workers. Defaults to 0.
   
 
 **Returns**:
 
-  None
+- `torch.utils.data.DataLoader` - Configured DataLoader for model training.
 

@@ -2,9 +2,26 @@
   "items": [
     {
       "items": [
+        {
+          "items": [
+            "reference/llm_utils/multi/OpenAI"
+          ],
+          "label": "llm_utils.multi",
+          "type": "category"
+        },
+        "reference/llm_utils/GPT",
+        "reference/llm_utils/LLM",
+        "reference/llm_utils/activation",
         "reference/llm_utils/causalAttn",
         "reference/llm_utils/dataLoader",
-        "reference/llm_utils/selfAttn"
+        "reference/llm_utils/dataSet",
+        "reference/llm_utils/feedForward",
+        "reference/llm_utils/multiHeadAttention",
+        "reference/llm_utils/normalization",
+        "reference/llm_utils/printDataset",
+        "reference/llm_utils/selfAttn",
+        "reference/llm_utils/trainer",
+        "reference/llm_utils/transformer"
       ],
       "label": "llm_utils",
       "type": "category"
