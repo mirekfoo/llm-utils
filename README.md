@@ -1,13 +1,30 @@
 # llm-utils
 Utilities for LLM construction and usage.
+LLM Building Blocks.
+Upon "Build a Large Language Model (From Scratch)" by Sebastian Raschka".
 
-## LLM construction utilities
+## LLM building blocks
 
-Utility|Module
+Utility|Module|Class(es)/Function(s)
 ---|---
-Pytorch DataLoader for LLM model. | `llm_utils.dataLoader`
 Self-attention mechanism classes. | `llm_utils.selfAttn`
-Causal-attention mechanism classes. | `llm_utils.causalAttn`
+Causal-attention mechanism classes. | `llm_utils.causalAttn`|
+Activation functions.|`llm_utils.activation`|`GELU`
+FeedForward block.|`llm_utils.feedForward`|`FeedForward`
+GPT Model.|`llm_utils.GPT`|`GPTModel`
+LLM instance.|`llm_utils.LLM`|`LLM`
+MultiHeadAttention.|`llm_utils.multiHeadAttention`|`MultiHeadAttention`
+Normalization block.|`llm_utils.normalization`|`LayerNorm`
+Transformer block.|`ll_utils.transformer`|`TransformerBlock`
+
+## LLM training blocks
+
+Utility|Module|Class/Function
+---|---|---
+Pytorch DataLoader for LLM model. | `llm_utils.dataLoader`|`createDataLoader`
+Pytorch Dataset for LLM model. | `llm_utils.dataSet`|`GPT_Dataset`
+Trainer class for LLM model training.|`llm_utils.trainer`|`GPT_Trainer`
+Utility colorized print of data batches.|`llm_utils.printDataset`|`print_data_set`
 
 ## LLM usage utilities
 
