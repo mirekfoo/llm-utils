@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "llm-utils"
-version = "0.3.0"
+version = "0.3.1"
 description = "Utilities for LLM construction and usage."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -39,7 +39,7 @@ where = ["src"]
 "pyutils" = ["py.typed"]
 
 [tool.bumpver]
-current_version = "0.3.0"
+current_version = "0.3.1"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version: {old_version} → {new_version}"
 tag_message = "v{new_version}"
