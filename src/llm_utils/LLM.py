@@ -3,6 +3,7 @@
 from pyutils.class_util import (get_class, create_instance)
 from pyutils.config_util import read_config_arg
 from pyutils.kwargs import getKwarg
+import llm_utils.torch.nn.moduleSize as nn_size
 import torch
 
 class LLM:
@@ -57,24 +58,16 @@ class LLM:
         Returns:
             int: The total number of parameters in the GPT model.
         """
-        return sum(p.numel() for p in self.gpt_model.parameters())
-
-    def getModelLayerParamNums(self):
-        """Returns a dictionary mapping each parameter name to its number of elements."""
-        return {name: p.numel() for name, p in self.gpt_model.named_parameters()}
+        return nn_size.getModuleParamsNum(self.gpt_model)
 
     def getModelMemSize(self):
         """Calculates the total memory size of the GPT model parameters in bytes."""
-        return sum(p.numel() * p.element_size() for p in self.gpt_model.parameters())
-
-    def getModelLayerMemSizes(self):
-        """Returns a dictionary mapping each parameter name to its memory size in bytes."""
-        return {name: p.numel() * p.element_size() for name, p in self.gpt_model.named_parameters()}
-    
+        return nn_size.getModuleMemSize(self.gpt_model)
+   
     def getModelBuffersMemSize(self):
         """Calculates the total memory size of the GPT model buffers in bytes."""
-        return sum(b.numel() * b.element_size() for b in self.gpt_model.buffers())
-    
+        return nn_size.getModuleBuffersMemSize(self.gpt_model)
+
     def getModel(self):
         """Returns the underlying GPT model instance.
 
