@@ -30,7 +30,7 @@ class LLM:
 
         self.tokenizer = create_instance(read_config_arg(cfg, "Tokenizer", "tiktoken.get_encoding('gpt2')"))
 
-        GPTModel = get_class(read_config_arg(cfg, "GPTModel", "llm_utils.GPT.GPTModel"))
+        GPTModel = get_class(read_config_arg(cfg, "GPTModel", "llm_utils.blocks.GPT.GPTModel"))
         self.gpt_model = GPTModel(cfg)
         
         device = self._getDevice()

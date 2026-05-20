@@ -18,11 +18,11 @@ class FeedForward(nn.Module):
             cfg (dict): Configuration dictionary containing:
                 - "emb_dim" (int): The embedding dimension.
                 - "Activation" (str, optional): The activation function class path.
-                  Defaults to "llm_utils.activation.GELU".
+                  Defaults to "llm_utils.blocks.activation.GELU".
         """
         super().__init__()
 
-        Activation = get_class(read_config_arg(cfg, "Activation", "llm_utils.activation.GELU"))
+        Activation = get_class(read_config_arg(cfg, "Activation", "llm_utils.blocks.activation.GELU"))
         self.layers = nn.Sequential(
             nn.Linear(cfg["emb_dim"], 4 * cfg["emb_dim"]),
             Activation(),

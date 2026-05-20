@@ -30,7 +30,7 @@ class TransformerBlock(nn.Module):
         super().__init__()
 
         # Initialize multi-head attention layer
-        MultiHeadAttention = get_class(read_config_arg(cfg, "Attention", "llm_utils.multiHeadAttention.MultiHeadAttention"))
+        MultiHeadAttention = get_class(read_config_arg(cfg, "Attention", "llm_utils.blocks.attention.MHA.MultiHeadAttention"))
         self.att = MultiHeadAttention(
             d_in=cfg["emb_dim"],
             d_out=cfg["emb_dim"],
@@ -40,11 +40,11 @@ class TransformerBlock(nn.Module):
             qkv_bias=cfg["qkv_bias"])
 
         # Initialize feed-forward network
-        FeedForward = get_class(read_config_arg(cfg, "FeedForward", "llm_utils.feedForward.FeedForward"))    
+        FeedForward = get_class(read_config_arg(cfg, "FeedForward", "llm_utils.blocks.feedForward.FeedForward"))    
         self.ff = FeedForward(cfg)
 
         # Initialize layer normalization layers
-        LayerNorm = get_class(read_config_arg(cfg, "LayerNorm", "llm_utils.normalization.LayerNorm"))
+        LayerNorm = get_class(read_config_arg(cfg, "LayerNorm", "llm_utils.blocks.normalization.LayerNorm"))
         self.norm1 = LayerNorm(cfg["emb_dim"])
         self.norm2 = LayerNorm(cfg["emb_dim"])
 
