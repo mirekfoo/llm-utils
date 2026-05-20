@@ -14,16 +14,16 @@
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
-        <title>llm_utils.multiHeadAttention - llm-utils Documentation</title>
+        <title>llm_utils.blocks.attention.causalAttn - llm-utils Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -42,9 +42,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#llm_utilsmultiheadattention" class="md-skip">
+        <a href="#llm_utilsblocksattentioncausalattn" class="md-skip">
           Skip to content
         </a>
       
@@ -78,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="llm-utils Documentation" class="md-header__button md-logo" aria-label="llm-utils Documentation" data-md-component="logo">
+    <a href="../../../../.." title="llm-utils Documentation" class="md-header__button md-logo" aria-label="llm-utils Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              llm_utils.multiHeadAttention
+              llm_utils.blocks.attention.causalAttn
             
           </span>
         </div>
@@ -176,7 +176,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="llm-utils Documentation" class="md-nav__button md-logo" aria-label="llm-utils Documentation" data-md-component="logo">
+    <a href="../../../../.." title="llm-utils Documentation" class="md-nav__button md-logo" aria-label="llm-utils Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -194,7 +194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../index.md" class="md-nav__link">
+      <a href="../../../../../index.md" class="md-nav__link">
         
   
   
@@ -221,7 +221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../../../" class="md-nav__link">
         
   
   
@@ -268,42 +268,59 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#llm_utils.multiHeadAttention" class="md-nav__link">
+  <a href="#llm_utils.blocks.attention.causalAttn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        multiHeadAttention
+        causalAttn
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="multiHeadAttention">
+    <nav class="md-nav" aria-label="causalAttn">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.multiHeadAttention.MultiHeadAttention" class="md-nav__link">
+  <a href="#llm_utils.blocks.attention.causalAttn.CausalAttention_V0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MultiHeadAttention
+        CausalAttention_V0
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MultiHeadAttention">
+    <nav class="md-nav" aria-label="CausalAttention_V0">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#llm_utils.multiHeadAttention.MultiHeadAttention.__init__" class="md-nav__link">
+  <a href="#llm_utils.blocks.attention.causalAttn.CausalAttention_V0.forward" class="md-nav__link">
     <span class="md-ellipsis">
       
-        __init__
+        forward
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#llm_utils.multiHeadAttention.MultiHeadAttention.forward" class="md-nav__link">
+  <a href="#llm_utils.blocks.attention.causalAttn.CausalAttention_V1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CausalAttention_V1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CausalAttention_V1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llm_utils.blocks.attention.causalAttn.CausalAttention_V1.forward" class="md-nav__link">
     <span class="md-ellipsis">
       
         forward
@@ -340,22 +357,22 @@
 
 
 
-<h1 id="llm_utilsmultiheadattention">llm_utils.multiHeadAttention</h1>
+<h1 id="llm_utilsblocksattentioncausalattn">llm_utils.blocks.attention.causalAttn</h1>
 
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="llm_utils.multiHeadAttention" class="doc doc-heading">
-            <span class="doc doc-object-name doc-module-name">llm_utils.multiHeadAttention</span>
+<h2 id="llm_utils.blocks.attention.causalAttn" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">llm_utils.blocks.attention.causalAttn</span>
 
 
 </h2>
 
     <div class="doc doc-contents first">
 
-        <p>MultiHeadAttention. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3.</p>
+        <p>Causal-attention mechanism classes. Upon: "Build a Large Language Model (From Scratch)" by Sebastian Raschka, chapter 3.5</p>
 
 
 
@@ -380,8 +397,8 @@
 
 
 
-<h3 id="llm_utils.multiHeadAttention.MultiHeadAttention" class="doc doc-heading">
-            <span class="doc doc-object-name doc-class-name">MultiHeadAttention</span>
+<h3 id="llm_utils.blocks.attention.causalAttn.CausalAttention_V0" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">CausalAttention_V0</span>
 
 
 </h3>
@@ -393,120 +410,66 @@
 
 
 
-        <p>Multi-head self-attention mechanism for transformer architectures.</p>
-<p>This class implements scaled dot-product attention with multiple heads,
-allowing the model to attend to information from different representation
-subspaces at different positions. Includes causal masking to prevent 
-attending to future tokens.</p>
+        <p>A simple self-attention mechanism implementation using linear layers for query, key, and value projections.</p>
 
 
-<p><span class="doc-section-title">Attributes:</span></p>
+<p><span class="doc-section-title">Parameters:</span></p>
     <table>
       <thead>
         <tr>
           <th>Name</th>
           <th>Type</th>
           <th>Description</th>
+          <th>Default</th>
         </tr>
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.d_out">d_out</span></code></td>
+            <td>
+                <code>d_in</code>
+            </td>
             <td>
                   <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Output dimension (must be divisible by num_heads).</p>
+                <p>The input dimension size.</p>
               </div>
+            </td>
+            <td>
+                <em>required</em>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.num_heads">num_heads</span></code></td>
+            <td>
+                <code>d_out</code>
+            </td>
             <td>
                   <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Number of attention heads.</p>
+                <p>The output dimension size for the queries, keys, and values.</p>
               </div>
+            </td>
+            <td>
+                <em>required</em>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.head_dim">head_dim</span></code></td>
             <td>
-                  <code><span title="int">int</span></code>
+                <code>qkv_bias</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Dimension of each attention head (d_out // num_heads).</p>
+                <p>If True, adds a learnable bias to the linear projections. Defaults to False.</p>
               </div>
             </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.W_query">W_query</span></code></td>
             <td>
-                  <code><span title="torch.nn.Linear">Linear</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Linear projection for queries.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.W_key">W_key</span></code></td>
-            <td>
-                  <code><span title="torch.nn.Linear">Linear</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Linear projection for keys.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.W_value">W_value</span></code></td>
-            <td>
-                  <code><span title="torch.nn.Linear">Linear</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Linear projection for values.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.out_proj">out_proj</span></code></td>
-            <td>
-                  <code><span title="torch.nn.Linear">Linear</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Linear projection to combine head outputs.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.dropout">dropout</span></code></td>
-            <td>
-                  <code><span title="torch.nn.Dropout">Dropout</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Dropout layer applied to attention weights.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><span title="llm_utils.multiHeadAttention.MultiHeadAttention.mask">mask</span></code></td>
-            <td>
-                  <code><span title="torch.Tensor">Tensor</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Causal mask buffer to prevent attending to future tokens.</p>
-              </div>
+                  <code>False</code>
             </td>
           </tr>
       </tbody>
@@ -536,169 +499,7 @@ attending to future tokens.</p>
 <div class="doc doc-object doc-function">
 
 
-<h4 id="llm_utils.multiHeadAttention.MultiHeadAttention.__init__" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">__init__</span>
-
-
-</h4>
-<div class="doc-signature highlight"><pre><span></span><code><span class="nf">__init__</span><span class="p">(</span>
-    <span class="n">d_in</span><span class="p">,</span>
-    <span class="n">d_out</span><span class="p">,</span>
-    <span class="n">context_length</span><span class="p">,</span>
-    <span class="n">dropout</span><span class="p">,</span>
-    <span class="n">num_heads</span><span class="p">,</span>
-    <span class="n">qkv_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-</code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Initialize the multi-head attention module.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_in</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Input dimension.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>d_out</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Output dimension. Must be divisible by num_heads.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>context_length</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Maximum sequence length for causal masking.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>dropout</code>
-            </td>
-            <td>
-                  <code><span title="float">float</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Dropout probability for attention weights.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>num_heads</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of attention heads.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>qkv_bias</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Whether to use bias in query, key, and value 
-projections. Defaults to False.</p>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="AssertionError">AssertionError</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If d_out is not divisible by num_heads.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="llm_utils.multiHeadAttention.MultiHeadAttention.forward" class="doc doc-heading">
+<h4 id="llm_utils.blocks.attention.causalAttn.CausalAttention_V0.forward" class="doc doc-heading">
             <span class="doc doc-object-name doc-function-name">forward</span>
 
 
@@ -708,7 +509,7 @@ projections. Defaults to False.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Compute multi-head self-attention with causal masking.</p>
+        <p>Forward pass for the CausalAttention_V0 module.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -731,7 +532,7 @@ projections. Defaults to False.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Input tensor of shape (batch_size, num_tokens, d_in).</p>
+                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
               </div>
             </td>
             <td>
@@ -756,8 +557,191 @@ projections. Defaults to False.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>torch.Tensor: Attention output of shape (batch_size, num_tokens, d_out).
-Represents the context-aware representation of each token.</p>
+                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="llm_utils.blocks.attention.causalAttn.CausalAttention_V1" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">CausalAttention_V1</span>
+
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="torch.nn.Module">Module</span></code></p>
+
+
+
+        <p>A simple self-attention mechanism implementation using linear layers for query, key, and value projections.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>d_in</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The input dimension size.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>d_out</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The output dimension size for the queries, keys, and values.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>qkv_bias</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, adds a learnable bias to the linear projections. Defaults to False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="llm_utils.blocks.attention.causalAttn.CausalAttention_V1.forward" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">forward</span>
+
+
+</h4>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Forward pass for the CausalAttention_V1 module.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>x</code>
+            </td>
+            <td>
+                  <code><span title="torch.Tensor">Tensor</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input tensor of shape (batch_size, seq_len, d_in).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>torch.Tensor: Output tensor of shape (batch_size, seq_len, d_out).</p>
               </div>
             </td>
           </tr>
@@ -834,10 +818,10 @@ Represents the context-aware representation of each token.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": [], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
