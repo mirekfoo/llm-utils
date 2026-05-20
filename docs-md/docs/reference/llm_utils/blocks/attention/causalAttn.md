@@ -1,6 +1,6 @@
 ---
 sidebar_label: causalAttn
-title: llm_utils.causalAttn
+title: llm_utils.blocks.attention.causalAttn
 ---
 
 Causal-attention mechanism classes. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 3.5

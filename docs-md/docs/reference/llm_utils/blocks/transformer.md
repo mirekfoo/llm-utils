@@ -1,6 +1,6 @@
 ---
 sidebar_label: transformer
-title: llm_utils.transformer
+title: llm_utils.blocks.transformer
 ---
 
 Transformer block. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 4.

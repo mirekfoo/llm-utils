@@ -1,6 +1,6 @@
 ---
 sidebar_label: feedForward
-title: llm_utils.feedForward
+title: llm_utils.blocks.feedForward
 ---
 
 FeedForward block. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 4.
@@ -29,7 +29,7 @@ Initialize the FeedForward module.
 - `cfg` _dict_ - Configuration dictionary containing:
   - &quot;emb_dim&quot; (int): The embedding dimension.
   - &quot;Activation&quot; (str, optional): The activation function class path.
-  Defaults to &quot;llm_utils.activation.GELU&quot;.
+  Defaults to &quot;llm_utils.blocks.activation.GELU&quot;.
 
 #### forward
 

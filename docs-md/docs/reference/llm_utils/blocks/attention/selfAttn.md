@@ -1,6 +1,6 @@
 ---
 sidebar_label: selfAttn
-title: llm_utils.selfAttn
+title: llm_utils.blocks.attention.selfAttn
 ---
 
 Self-attention mechanism classes. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 3.

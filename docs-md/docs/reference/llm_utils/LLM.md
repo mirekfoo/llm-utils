@@ -52,14 +52,6 @@ metric for understanding model complexity.
 
 - `int` - The total number of parameters in the GPT model.
 
-#### getModelLayerParamNums
-
-```python
-def getModelLayerParamNums()
-```
-
-Returns a dictionary mapping each parameter name to its number of elements.
-
 #### getModelMemSize
 
 ```python
@@ -67,14 +59,6 @@ def getModelMemSize()
 ```
 
 Calculates the total memory size of the GPT model parameters in bytes.
-
-#### getModelLayerMemSizes
-
-```python
-def getModelLayerMemSizes()
-```
-
-Returns a dictionary mapping each parameter name to its memory size in bytes.
 
 #### getModelBuffersMemSize
 

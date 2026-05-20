@@ -4,24 +4,49 @@
       "items": [
         {
           "items": [
+            {
+              "items": [
+                "reference/llm_utils/blocks/attention/MHA",
+                "reference/llm_utils/blocks/attention/causalAttn",
+                "reference/llm_utils/blocks/attention/selfAttn"
+              ],
+              "label": "llm_utils.blocks.attention",
+              "type": "category"
+            },
+            "reference/llm_utils/blocks/GPT",
+            "reference/llm_utils/blocks/activation",
+            "reference/llm_utils/blocks/feedForward",
+            "reference/llm_utils/blocks/normalization",
+            "reference/llm_utils/blocks/transformer"
+          ],
+          "label": "llm_utils.blocks",
+          "type": "category"
+        },
+        {
+          "items": [
             "reference/llm_utils/multi/OpenAI"
           ],
           "label": "llm_utils.multi",
           "type": "category"
         },
-        "reference/llm_utils/GPT",
+        {
+          "items": [
+            {
+              "items": [
+                "reference/llm_utils/torch/nn/moduleSize"
+              ],
+              "label": "llm_utils.torch.nn",
+              "type": "category"
+            }
+          ],
+          "label": "llm_utils.torch",
+          "type": "category"
+        },
         "reference/llm_utils/LLM",
-        "reference/llm_utils/activation",
-        "reference/llm_utils/causalAttn",
         "reference/llm_utils/dataLoader",
         "reference/llm_utils/dataSet",
-        "reference/llm_utils/feedForward",
-        "reference/llm_utils/multiHeadAttention",
-        "reference/llm_utils/normalization",
         "reference/llm_utils/printDataset",
-        "reference/llm_utils/selfAttn",
-        "reference/llm_utils/trainer",
-        "reference/llm_utils/transformer"
+        "reference/llm_utils/trainer"
       ],
       "label": "llm_utils",
       "type": "category"

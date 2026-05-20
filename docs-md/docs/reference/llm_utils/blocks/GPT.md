@@ -1,6 +1,6 @@
 ---
 sidebar_label: GPT
-title: llm_utils.GPT
+title: llm_utils.blocks.GPT
 ---
 
 GPT Model. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 4.

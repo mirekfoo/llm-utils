@@ -1,6 +1,6 @@
 ---
 sidebar_label: normalization
-title: llm_utils.normalization
+title: llm_utils.blocks.normalization
 ---
 
 Normalization block. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 4.

@@ -1,6 +1,6 @@
 ---
 sidebar_label: activation
-title: llm_utils.activation
+title: llm_utils.blocks.activation
 ---
 
 Activation function. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 4.

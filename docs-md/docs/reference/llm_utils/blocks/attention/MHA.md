@@ -1,6 +1,6 @@
 ---
-sidebar_label: multiHeadAttention
-title: llm_utils.multiHeadAttention
+sidebar_label: MHA
+title: llm_utils.blocks.attention.MHA
 ---
 
 MultiHeadAttention. Upon: &quot;Build a Large Language Model (From Scratch)&quot; by Sebastian Raschka, chapter 3.
